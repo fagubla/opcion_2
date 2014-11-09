@@ -14,6 +14,9 @@
   var restaraunts = ["Cafe Internet", "En la Piscina", "Ferias", "Entradas Folkloricas",
                      "En la calle (Día)", "En la calle (Noche)", "Fiestas", "Solo en casa",
                      "Lugares publicos", "Colegios o Universidad", "Sitios Web", "Anuncios Periodicos"];
+    var vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+    
+    var preguntas = ["¿Es correcto caminar con altas cantidad dinero?", "¿Caminar de noche solo?", "¿Tomar taxi con pasajeros?","¿Conducir en estado de ebriedad?","Entrar en calles vacias?"];
   
   var startAngle = 0;
   var arc = Math.PI / 6;
@@ -25,6 +28,7 @@
   
   var ctx;
   var texto;
+    var pos;
   function draw() {
     drawRouletteWheel();
   }
@@ -66,6 +70,7 @@
         var text = restaraunts[i];
         ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
         ctx.restore();
+        
       } 
       
       //Arrow
@@ -111,9 +116,11 @@
     ctx.font = 'bold 30px sans-serif';
     var text = restaraunts[index];
     texto = text;
+      pos = index;
       console.log(texto);
     ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
     ctx.restore();
+      pregunta();
   }
   
   function easeOut(t, b, c, d) {
@@ -121,7 +128,12 @@
     var tc = ts*t;
     return b+c*(tc + -3*ts + 3*t);
   }
-  
+  function pregunta(){
+    if(confirm("Sabes que no debes hacer en " + texto+ "?"))
+        alert("correcto");
+      else
+          alert("incorrecto");
+  }
   draw();
 </script>
 </body>

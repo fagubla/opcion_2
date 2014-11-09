@@ -16,7 +16,8 @@
                      "Lugares publicos", "Colegios o Universidad", "Sitios Web", "Anuncios Periodicos"];
     var vector = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
     
-    var preguntas = ["¿Es correcto caminar con altas cantidad dinero?", "¿Caminar de noche solo?", "¿Tomar taxi con pasajeros?","¿Conducir en estado de ebriedad?","Entrar en calles vacias?"];
+    var preguntas = ["¿Es correcto caminar con altas cantidad dinero?", "¿Caminar de noche solo?", "¿Tomar taxi con pasajeros?",
+                     "¿Conducir en estado de ebriedad?","Entrar en calles vacias?"];
   
   var startAngle = 0;
   var arc = Math.PI / 6;
@@ -129,7 +130,8 @@
     return b+c*(tc + -3*ts + 3*t);
   }
   function pregunta(){
-    if(confirm("Sabes que no debes hacer en " + texto+ "?"))
+      var x = Math.floor((Math.random() * 5) + 0);
+    if(!confirm(preguntas[x]))
         alert("correcto");
       else
           alert("incorrecto");
